@@ -74,9 +74,104 @@ class Matrix:
     
 		return Vector(vec)
 
-	def scale(self, scalar):
+	def scale(self, scalar : int | float):
 		if not isinstance(scalar, (int, float)):
 			raise TypeError("Scalar must be of type int or float")
 		for i in range(self.size()[0]):
 			for j in range(self.size()[1]):
 				self.elems[i][j] *= scalar
+    
+	def __mul__(self, scalar : int | float):
+		if not isinstance(scalar, (int, float)):
+			raise TypeError("Scalar must be of type int or float")
+
+		res = []
+		for i in range(self.size()[0]):
+			res.append([])
+			for j in range(self.size()[1]):
+				res[i].append(self.elems[i][j] * scalar)
+    
+		return Matrix(res)
+
+	def mul_vec(self, vec):
+		from Vector import Vector
+
+		if not isinstance(vec, Vector):
+			raise TypeError("Argument must be of type Vector")
+		if vec.size() != self.size()[1]:
+			raise ValueError("Vector must have a size equal to Matrix number of columns")
+
+		res = []
+		for i in range(self.size()[0]):
+			res.append(0)
+			for j in range(self.size()[1]):
+				res[i] += self.elems[i][j] * vec[j]
+
+		return Vector(res)
+
+	def mul_mat(self, mat):
+		if not isinstance(mat, Matrix):      
+			raise TypeError("Argument must be of type Matrix")
+		if self.size()[1] != mat.size()[0]:
+			raise ValueError("Second Matrix must have a number of line equal to first Matrix number of columns")
+
+		res = []
+		for i in range(self.size()[0]):
+			res.append([])
+			for j in range(mat.size()[1]):
+				res[i].append(0)
+				for k in range(mat.size()[0]):
+					res[i][j] += self[i, k] * mat[k, j]
+
+		return Matrix(res)
+
+	def trace(self):
+		if not self.isSquare():
+			raise ValueError("Matrix must be square to compute the trace")
+
+		res = 0
+		for i in range(self.size()[0]):
+			res += self[i, i]
+
+		return res
+
+	def transpose(self):
+		res = []
+		for i in range(self.size()[1]):
+			res.append([])
+			for j in range(self.size()[0]):
+				res[i].append(self[j, i])
+    
+		return Matrix(res)
+
+	def row_echelon(self):
+		from Vector import Vector
+		res = Matrix(self.elems)
+
+		i, j = 0, 0
+		while i < res.size()[0] and j < res.size()[1]:
+			if res[i, j] == 0:
+				k = i + 1
+				while k < res.size()[0]:
+					if res[k, j] != 0: #Row-switching
+						swp = res.elems[i]
+						res.elems[i] = res.elems[k]
+						res.elems[k] = swp
+						break
+					k += 1
+      
+				if res[i, j] == 0:
+					j += 1
+					continue
+
+			if res[i, j] != 0:
+				res.elems[i] = (Vector(res.elems[i]) * (1/res[i, j])).elems #Row-multiplying
+				k = 0
+				while k < res.size()[0]:
+					if res[k, j] != 0 and k != i:
+						res.elems[k] = (Vector(res.elems[k]) + (Vector(res.elems[i]) * -res[k, j])).elems #Row-addition
+					k += 1
+				i += 1
+
+			j += 1
+		return res
