@@ -1,6 +1,8 @@
 from Vector import *
 from Matrix import *
 
+from math import tan, pi
+
 # Vector linear combination
 def linear_combination(vectors : list[Vector], scalars : list[int | float]):
 	for v in vectors:
@@ -56,3 +58,21 @@ def cross_product(u : Vector, v : Vector) -> Vector:
          	u[0] * v[1] - u[1] * v[0]]
 
 	return Vector(res)
+
+# Bonus: Projection matrix
+def projection(fov : int|float, ratio : int|float, near : int|float, far : int|float):
+	if not isinstance(fov, (int, float)) or not isinstance(ratio, (int, float))\
+		or not isinstance(near, (int, float)) or not isinstance(far, (int, float)):
+		raise TypeError("All arguments must be of type int or float")
+	if not fov in range(0, 360):
+		raise ValueError("FOV must be between 0 and 360 (not included)")
+	if ratio <= 0:
+		raise ValueError("Ratio must be greater than 0")
+	if near < 0:
+		raise ValueError("Near must be superior or equal to 0")
+	if far < 0:
+		raise ValueError("Far must be superior or equal to 0")
+	if far <= near:
+		raise ValueError("Far must be superior to near")
+
+	# return Matrix(mat)
