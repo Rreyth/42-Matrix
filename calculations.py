@@ -75,4 +75,14 @@ def projection(fov : int|float, ratio : int|float, near : int|float, far : int|f
 	if far <= near:
 		raise ValueError("Far must be superior to near")
 
-	# return Matrix(mat)
+	proj = Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+	tan_fov = tan(fov * 0.5 * (pi / 180))
+	scale_x = 1 / (tan_fov * ratio)
+	scale_y = 1 / tan_fov
+	proj[0, 0] = scale_x
+	proj[1, 1] = scale_y
+	proj[2, 2] = -far / (far - near)
+	proj[2, 3] = -1
+	proj[3, 2] = -far * near / (far - near)
+
+	return proj
