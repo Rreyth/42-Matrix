@@ -1,5 +1,5 @@
-from Vector import *
-from Matrix import *
+from Vector import Vector
+from Matrix import Matrix
 
 # EX07: Linear map, Matrix multiplication
 print("-------Matrix multiplication-------")

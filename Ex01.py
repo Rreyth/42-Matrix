@@ -1,5 +1,5 @@
-from Vector import *
-from calculations import *
+from Vector import Vector
+from vector_calc import linear_combination
 
 # EX01: Vector linear combination
 print("-------Vector linear combination-------")

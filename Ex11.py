@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX11: Determinant
 print("-------Matrix determinant-------")

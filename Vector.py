@@ -1,8 +1,11 @@
+from Complex import Complex
+from calculations import absolute
+
 class Vector:
-	def __init__(self, elements : list[int | float]):
+	def __init__(self, elements : list[int | float | Complex]):
 		for element in elements:
-			if not isinstance(element, (int, float)):
-				raise TypeError("Vector argument must be a list of [int or float]")
+			if not isinstance(element, (int, float, Complex)):
+				raise TypeError("Vector argument must be a list of [int or float or Complex]")
 		self.elems = elements
 
 	def size(self):
@@ -54,19 +57,19 @@ class Vector:
 		return self.elems[key]
 
 	def __setitem__(self, key, value):
-		if not isinstance(value, (int, float)):
-			raise TypeError("Vector only contains int or float types")
+		if not isinstance(value, (int, float, Complex)):
+			raise TypeError("Vector only contains int, float or Complex types")
 		self.elems[key] = value
 
-	def scale(self, scalar : int | float):
-		if not isinstance(scalar, (int, float)):
-			raise TypeError("Scalar must be of type int or float")
+	def scale(self, scalar : int | float | Complex):
+		if not isinstance(scalar, (int, float, Complex)):
+			raise TypeError("Scalar must be of type int, float or Complex")
 		for i in range(self.size()):
 			self.elems[i] *= scalar
 
-	def __mul__(self, scalar : int | float):
-		if not isinstance(scalar, (int, float)):
-			raise TypeError("Scalar must be of type int or float")
+	def __mul__(self, scalar : int | float | Complex):
+		if not isinstance(scalar, (int, float, Complex)):
+			raise TypeError("Scalar must be of type int, float or Complex")
 		res = []
 		for i in range(self.size()):
 			res.append(self.elems[i] * scalar)
@@ -88,18 +91,18 @@ class Vector:
 	def norm_1(self):
 		res = 0
 		for elem in self.elems:
-			res += elem if elem >= 0 else -elem
+			res += absolute(elem)
 
 		return res
 
 	def norm(self):
 		res = 0
 		for elem in self.elems:
-			res += pow(elem, 2)
-  
-		return pow(res, 0.5)
+			res += elem ** 2
+
+		return res ** 0.5
 
 	def norm_inf(self):
-		res = [(elem if elem >= 0 else -elem) for elem in self.elems]
+		res = [absolute(elem) for elem in self.elems]
   
 		return max(res)

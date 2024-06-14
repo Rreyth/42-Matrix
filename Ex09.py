@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX09: Transpose
 print("-------Matrix Transpose-------")

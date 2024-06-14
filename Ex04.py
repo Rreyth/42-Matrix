@@ -1,4 +1,4 @@
-from Vector import *
+from Vector import Vector
 
 # EX04: Norm
 print("-------Vector Norm-------")

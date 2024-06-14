@@ -1,6 +1,6 @@
-from Matrix import *
-from Vector import *
-from calculations import *
+from Matrix import Matrix
+from Vector import Vector
+from calculations import lerp
 
 # EX02: Linear interpolation
 print("-------linear interpolation-------")
