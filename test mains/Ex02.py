@@ -1,6 +1,9 @@
-from Matrix import Matrix
-from Vector import Vector
-from calculations import lerp
+import sys
+sys.path.append('../')
+
+from classes.Matrix import Matrix
+from classes.Vector import Vector
+from functions.calculations import lerp
 
 # EX02: Linear interpolation
 print("-------linear interpolation-------")

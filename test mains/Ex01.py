@@ -1,5 +1,8 @@
-from Vector import Vector
-from vector_calc import linear_combination
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
+from functions.vector_calc import linear_combination
 
 # EX01: Vector linear combination
 print("-------Vector linear combination-------")

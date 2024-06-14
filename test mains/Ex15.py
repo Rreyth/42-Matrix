@@ -1,8 +1,11 @@
-from Vector import Vector
-from Matrix import Matrix
-from Complex import Complex
-from calculations import lerp
-from vector_calc import linear_combination, angle_cos, cross_product
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
+from classes.Matrix import Matrix
+from classes.Complex import Complex
+from functions.calculations import lerp
+from functions.vector_calc import linear_combination, angle_cos, cross_product
 
 # EX15: Bonus: Complex
 print("-------Complex-------")

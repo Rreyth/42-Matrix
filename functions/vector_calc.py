@@ -1,5 +1,5 @@
-from Vector import Vector
-from Complex import Complex
+from classes.Vector import Vector
+from classes.Complex import Complex
 
 # Vector linear combination
 def linear_combination(vectors : list[Vector], scalars : list[int | float | Complex]):

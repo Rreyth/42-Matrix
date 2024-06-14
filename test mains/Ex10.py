@@ -1,4 +1,7 @@
-from Matrix import Matrix
+import sys
+sys.path.append('../')
+
+from classes.Matrix import Matrix
 
 # EX10: row-echelon form
 print("-------Matrix row-echelon form-------")

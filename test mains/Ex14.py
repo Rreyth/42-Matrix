@@ -1,4 +1,7 @@
-from matrix_calc import projection
+import sys
+sys.path.append('../')
+
+from functions.projection import projection
 
 # EX14: Bonus: Projection matrix
 print("-------Projection matrix-------")

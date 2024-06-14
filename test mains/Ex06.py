@@ -1,5 +1,8 @@
-from Vector import Vector
-from vector_calc import cross_product
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
+from functions.vector_calc import cross_product
 
 # EX06: Cross product
 print("-------3D Vector Cross product-------")
