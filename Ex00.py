@@ -11,6 +11,8 @@ print("\nprint vec")
 print(v)
 print("\nvec to matrix")
 print(v.toMatrix(3, 3))
+
+# EX00
 v2 = Vector([1, 2, 3, 4, 5, 6, 7, 8, 9])
 print(f"\nvector v: {v}\n+ vector v2: {v2}")
 v3 = v + v2
@@ -45,6 +47,8 @@ m2 = Matrix([[1, 1, 1],
         [2, 2, 2],
         [3, 3, 3],
         [4, 4, 4]])
+
+# EX00
 print(f"\nMatrix m:\n{m}\n+ Matrix m2:\n{m2}\n=")
 m3 = m + m2
 print(m3)
@@ -57,13 +61,3 @@ print(f"\nSetitem Matrix [1, 2] of m3:\n{m3}\nto 999")
 m3[1, 2] = 999
 print(f"\nGetitem Matrix [1, 2] of m3:\n{m3}")
 print(m3[1, 2])
-
-# EX01: Vector linear combination
-print("\n\n-------Vector linear combination-------")
-v = Vector([1, 2, 3])
-w = Vector([0, 10, -100])
-
-scalars = [10, -2]
-
-print(f"\nvectors :\nv = {v}\nw = {w}\nscalars = {scalars}")
-print("res = ", linear_combination([v, w], scalars))

@@ -64,27 +64,46 @@ class Vector:
 		for i in range(self.size()):
 			self.elems[i] *= scalar
 
-# linear_combination::<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K>;
-def linear_combination(vectors : list[Vector], scalars : list[int | float]):
-	for v in vectors:
-		if not isinstance(v, Vector):
-			raise TypeError("First argument must be a list of Vectors")
-	for s in scalars:
-		if not isinstance(s, (int, float)):
-			raise TypeError("Second argument must be a list of scalars of type int or float")
-	if vectors.__len__() != scalars.__len__():
-		raise ValueError("Vectors list and scalars list must have the same size")
+	def __mul__(self, scalar : int | float):
+		if not isinstance(scalar, (int, float)):
+			raise TypeError("Scalar must be of type int or float")
+		res = []
+		for i in range(self.size()):
+			res.append(self.elems[i] * scalar)
 	
-	for i in range(vectors.__len__()):
-		vectors[i].scale(scalars[i])
-	
-	res = vectors[0]
-	for i in range(vectors.__len__() - 1):
-		res = res + vectors[i + 1]
+		return Vector(res)
 
-	return res
-			
-			
+	def dot(self, other):
+		if not isinstance(other, Vector):
+			raise TypeError("Cannot do a dot product with a non vector on a vector")
+		if self.size() != other.size():
+			raise ValueError("Vectors must be of same size")
+ 
+		res = 0
+		for i in range(self.size()):
+			res += (self.elems[i] * other.elems[i])
+
+		return res
+
+	def norm_1(self):
+		res = 0
+		for elem in self.elems:
+			res += elem if elem >= 0 else -elem
+
+		return res
+
+	def norm(self):
+		res = 0
+		for elem in self.elems:
+			res += pow(elem, 2)
+  
+		return pow(res, 0.5)
+
+	def norm_inf(self):
+		res = [(elem if elem >= 0 else -elem) for elem in self.elems]
+  
+		return max(res)
+
 
 
 # 	def __ne__(self, other):
@@ -102,16 +121,6 @@ def linear_combination(vectors : list[Vector], scalars : list[int | float]):
 # 	def move(self, speed, dist):
 # 		self.x += (speed.x * dist)
 # 		self.y += (speed.y * dist)
-  
-# 	def normalize(self):
-# 		len = sqrt((self.x * self.x) + (self.y * self.y))
-# 		self.div(len)
-
-# def dotProduct(v1, v2):
-# 	return ((v1.x * v2.x) + (v1.y * v2.y))
-
-# def crossProduct(v1, v2):
-# 	return ((v1.x * v2.y) - (v1.y * v2.x))
 
 # def getDist(v1, v2):
 # 	dx = pow(v2.x - v1.x, 2)
