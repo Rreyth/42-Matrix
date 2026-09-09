@@ -103,26 +103,3 @@ class Vector:
 		res = [(elem if elem >= 0 else -elem) for elem in self.elems]
   
 		return max(res)
-
-
-
-# 	def __ne__(self, other):
-# 		return int(self.x) != int(other.x) or int(self.y) != int(other.y)
-
-# 	def __eq__(self, other):
-# 		return self.x == other.x and self.y == other.y
-
-# 	def div(self, nb):
-# 		if nb == 0:
-# 			return
-# 		self.x /= nb
-# 		self.y /= nb
-
-# 	def move(self, speed, dist):
-# 		self.x += (speed.x * dist)
-# 		self.y += (speed.y * dist)
-
-# def getDist(v1, v2):
-# 	dx = pow(v2.x - v1.x, 2)
-# 	dy = pow(v2.y - v1.y, 2)
-# 	return sqrt(dx + dy)
