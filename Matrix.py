@@ -175,3 +175,62 @@ class Matrix:
 
 			j += 1
 		return res
+
+	def determinant(self):
+		if not self.isSquare():
+			raise ValueError("Matrix must be square to compute determinant")
+		det = 0
+		if self.size()[0] > 2:
+			for column in range(self.size()[1]):
+				sub_det = self.__subMatrix(0, column).determinant()
+				det += ((-1) ** column) * self[0, column] * sub_det
+
+		elif self.size()[0] == 0:
+			return 0
+		elif self.size()[0] == 1:
+			return self[0, 0]
+		else:
+			det = (self[0, 0] * self[1, 1]) - (self[0, 1] * self[1, 0])
+
+		return det
+
+	def __subMatrix(self, row, column):
+		mat = []
+		for i in range(self.size()[0]):
+			if i == row:
+				continue
+			line = []
+			for j in range(self.size()[1]):
+				if j == column:
+					continue
+				line.append(self[i, j])
+			mat.append(line)
+		return Matrix(mat)
+
+	def inverse(self):
+		det = self.determinant()
+		if det == 0:
+			raise ValueError("Given Matrix is singular / non-reversible")
+		mat = []
+		for i in range(self.size()[0]):
+			line = []
+			for j in range(self.size()[1]):
+				res = self.__subMatrix(i, j).determinant()
+				res = res * ((-1) ** (i + j))
+				line.append(res)
+			mat.append(line)
+		cofactor = Matrix(mat).transpose()
+		inverse = cofactor * (1/det)
+
+		return inverse
+
+	def rank(self):
+		mat = self.row_echelon()
+		rank = 0
+		for i in range(self.size()[0]):
+			for j in range(self.size()[1]):
+				if mat[i, j] != 0:
+					rank += 1
+					break
+ 
+		return rank
