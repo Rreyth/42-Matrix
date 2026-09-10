@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX10: row-echelon form
 print("-------Matrix row-echelon form-------")

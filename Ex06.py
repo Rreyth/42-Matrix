@@ -1,5 +1,5 @@
-from Vector import *
-from calculations import *
+from Vector import Vector
+from vector_calc import cross_product
 
 # EX06: Cross product
 print("-------3D Vector Cross product-------")

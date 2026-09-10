@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX08: Trace
 print("-------Matrix trace-------")

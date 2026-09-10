@@ -1,4 +1,4 @@
-from calculations import *
+from matrix_calc import projection
 
 # EX14: Bonus: Projection matrix
 print("-------Projection matrix-------")

@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX12: Inverse
 print("-------Matrix Inverse-------")

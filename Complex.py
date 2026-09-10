@@ -1,9 +1,14 @@
+from calculations import absolute
+
 class Complex:
 	def __init__(self, a, b):
 		self.a = a
 		self.b = b
 
 	def __str__(self):
+		return f"{self.a} + {self.b}i"
+
+	def __repr__(self):
 		return f"{self.a} + {self.b}i"
 
 	def __add__(self, other):
@@ -77,6 +82,21 @@ class Complex:
 		b = -((other * self.b) / (self.a ** 2 + self.b ** 2))
 
 		return Complex(a, b)
+
+	def __pow__(self, exp):
+		if exp == 0.5:
+			res = self.squareRoot()
+		else:
+			res = self
+			for i in range(exp - 1):
+				res *= self
+		return res
+
+	def __gt__(self, other):
+		return self.absolute() > absolute(other)
+
+	def __ne__(self, value):
+		return self.absolute() != value
 
 	def absolute(self):
 		res = self.a ** 2 + self.b ** 2

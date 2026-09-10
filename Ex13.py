@@ -1,4 +1,4 @@
-from Matrix import *
+from Matrix import Matrix
 
 # EX13: Rank
 print("-------Matrix Rank-------")

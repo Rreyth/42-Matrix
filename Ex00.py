@@ -1,5 +1,5 @@
-from Matrix import *
-from Vector import *
+from Matrix import Matrix
+from Vector import Vector
 
 # BASE VECTOR TESTS
 print("-------Vector tests-------")

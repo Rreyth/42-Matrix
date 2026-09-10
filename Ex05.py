@@ -1,5 +1,5 @@
-from Vector import *
-from calculations import *
+from Vector import Vector
+from vector_calc import angle_cos
 
 # EX05: Cosine
 print("-------Vector Cosine-------")

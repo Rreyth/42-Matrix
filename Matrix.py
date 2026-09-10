@@ -1,14 +1,16 @@
+from Complex import Complex
+
 class Matrix:
-	def __init__(self, elements : list[list[int | float]]):
+	def __init__(self, elements : list[list[int | float | Complex]]):
 		size = elements[0].__len__()
 		for line in elements:
 			if line.__len__() != size:
 				raise ValueError("Matrix must be a rectangle or a square")
 			for elem in line:
-				if not isinstance(elem, (int, float)):
-					raise TypeError("Matrix argument must be a list of lists of [int or float]")
+				if not isinstance(elem, (int, float, Complex)):
+					raise TypeError("Matrix argument must be a list of lists of [int, float or Complex]")
 		self.elems = elements
-  
+
 	def size(self):
 		size = [self.elems.__len__(), self.elems[0].__len__()]
 		return size
@@ -54,15 +56,13 @@ class Matrix:
 		return self.elems[r][c]
 
 	def __setitem__(self, keys, value):
-		if not isinstance(value, (int, float)):
-			raise TypeError("Matrix only contains int or float types")
+		if not isinstance(value, (int, float, Complex)):
+			raise TypeError("Matrix only contains int, float or Complex types")
 		r, c = keys
 		self.elems[r][c] = value
 
 	def isSquare(self):
-		if self.elems.__len__() == self.elems[0].__len__():
-			return True
-		return False
+		return self.elems.__len__() == self.elems[0].__len__()
 
 	def toVector(self):
 		from Vector import Vector
@@ -74,16 +74,16 @@ class Matrix:
     
 		return Vector(vec)
 
-	def scale(self, scalar : int | float):
-		if not isinstance(scalar, (int, float)):
-			raise TypeError("Scalar must be of type int or float")
+	def scale(self, scalar : int | float | Complex):
+		if not isinstance(scalar, (int, float, Complex)):
+			raise TypeError("Scalar must be of type int, float or Complex")
 		for i in range(self.size()[0]):
 			for j in range(self.size()[1]):
 				self.elems[i][j] *= scalar
     
-	def __mul__(self, scalar : int | float):
-		if not isinstance(scalar, (int, float)):
-			raise TypeError("Scalar must be of type int or float")
+	def __mul__(self, scalar : int | float | Complex):
+		if not isinstance(scalar, (int, float, Complex)):
+			raise TypeError("Scalar must be of type int, float or Complex")
 
 		res = []
 		for i in range(self.size()[0]):
@@ -169,7 +169,7 @@ class Matrix:
 				k = 0
 				while k < res.size()[0]:
 					if res[k, j] != 0 and k != i:
-						res.elems[k] = (Vector(res.elems[k]) + (Vector(res.elems[i]) * -res[k, j])).elems #Row-addition
+						res.elems[k] = (Vector(res.elems[k]) + (Vector(res.elems[i]) * ((-1) * res[k, j]))).elems #Row-addition
 					k += 1
 				i += 1
 

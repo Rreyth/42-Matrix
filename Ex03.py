@@ -1,4 +1,4 @@
-from Vector import *
+from Vector import Vector
 
 # EX03: Dot product
 print("-------Vector dot product-------")
