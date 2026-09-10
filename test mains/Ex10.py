@@ -39,3 +39,8 @@ m = Matrix([[1, 2, 3, 4], [0, 0, 5, 6], [7, 8, 9, 1]])
 
 print(f"\nm = \n{m}")
 print(f"m.row_echelon() = \n{m.row_echelon()}")
+
+m = Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+
+print(f"\nm = \n{m}")
+print(f"m.row_echelon() = \n{m.row_echelon()}")
