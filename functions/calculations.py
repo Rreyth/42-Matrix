@@ -13,7 +13,7 @@ def lerp(obj1, obj2, scalar : int | float):
 
 # Utils
 def absolute(value):
-	from Complex import Complex
+	from classes.Complex import Complex
 
 	if type(value) == Complex:
 		res = value.absolute()

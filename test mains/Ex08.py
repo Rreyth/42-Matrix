@@ -1,4 +1,7 @@
-from Matrix import Matrix
+import sys
+sys.path.append('../')
+
+from classes.Matrix import Matrix
 
 # EX08: Trace
 print("-------Matrix trace-------")

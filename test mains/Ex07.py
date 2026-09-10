@@ -1,5 +1,8 @@
-from Vector import Vector
-from Matrix import Matrix
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
+from classes.Matrix import Matrix
 
 # EX07: Linear map, Matrix multiplication
 print("-------Matrix multiplication-------")

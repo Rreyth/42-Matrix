@@ -1,4 +1,4 @@
-from Complex import Complex
+from classes.Complex import Complex
 
 class Matrix:
 	def __init__(self, elements : list[list[int | float | Complex]]):
@@ -65,7 +65,7 @@ class Matrix:
 		return self.elems.__len__() == self.elems[0].__len__()
 
 	def toVector(self):
-		from Vector import Vector
+		from classes.Vector import Vector
 
 		vec = []
 		for line in self.elems:
@@ -94,7 +94,7 @@ class Matrix:
 		return Matrix(res)
 
 	def mul_vec(self, vec):
-		from Vector import Vector
+		from classes.Vector import Vector
 
 		if not isinstance(vec, Vector):
 			raise TypeError("Argument must be of type Vector")
@@ -145,7 +145,7 @@ class Matrix:
 		return Matrix(res)
 
 	def row_echelon(self):
-		from Vector import Vector
+		from classes.Vector import Vector
 		res = Matrix(self.elems)
 
 		i, j = 0, 0

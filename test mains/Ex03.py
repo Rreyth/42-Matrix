@@ -1,4 +1,7 @@
-from Vector import Vector
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
 
 # EX03: Dot product
 print("-------Vector dot product-------")

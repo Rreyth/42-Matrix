@@ -1,5 +1,8 @@
-from Matrix import Matrix
-from Vector import Vector
+import sys
+sys.path.append('../')
+
+from classes.Matrix import Matrix
+from classes.Vector import Vector
 
 # BASE VECTOR TESTS
 print("-------Vector tests-------")

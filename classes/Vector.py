@@ -1,5 +1,5 @@
-from Complex import Complex
-from calculations import absolute
+from classes.Complex import Complex
+from functions.calculations import absolute
 
 class Vector:
 	def __init__(self, elements : list[int | float | Complex]):
@@ -15,7 +15,7 @@ class Vector:
 		return str(self.elems)
 
 	def toMatrix(self, rows : int, columns : int):
-		from Matrix import Matrix
+		from classes.Matrix import Matrix
 
 		if not isinstance(rows, int) or not isinstance(columns, int):
 			raise TypeError("Width and height must be integers")

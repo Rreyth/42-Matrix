@@ -1,4 +1,4 @@
-from Matrix import Matrix
+from classes.Matrix import Matrix
 from math import tan, pi
 
 # Bonus: Projection matrix

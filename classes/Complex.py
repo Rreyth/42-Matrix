@@ -1,4 +1,4 @@
-from calculations import absolute
+from functions.calculations import absolute
 
 class Complex:
 	def __init__(self, a, b):

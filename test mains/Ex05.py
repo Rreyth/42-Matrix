@@ -1,5 +1,8 @@
-from Vector import Vector
-from vector_calc import angle_cos
+import sys
+sys.path.append('../')
+
+from classes.Vector import Vector
+from functions.vector_calc import angle_cos
 
 # EX05: Cosine
 print("-------Vector Cosine-------")
